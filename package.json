@@ -1,0 +1,15 @@
+{
+  "name": "ai-short-video-method-library",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "render:all": "node scripts/render-all.mjs",
+    "render:gsap": "node examples/_shared/capture.mjs examples/m01-gsap-html/scene.html output/m01.mp4",
+    "render:data": "node examples/_shared/capture.mjs examples/m10-data-viz/scene.html output/m10.mp4",
+    "render:diagram": "node examples/_shared/capture.mjs examples/m16-diagram-as-code/scene.html output/m16.mp4"
+  }
+}

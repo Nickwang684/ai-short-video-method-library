@@ -1,0 +1,13 @@
+{
+  "name": "video-shared",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Frame-locked browser capture harness shared by the HTML/Canvas/WebGL video methods",
+  "bin": {
+    "capture": "./capture.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.56.1"
+  }
+}

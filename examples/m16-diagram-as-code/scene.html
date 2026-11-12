@@ -1,0 +1,56 @@
+<meta charset="utf-8" />
+<title>Diagram-as-code scene</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #08080C; overflow: hidden; }
+  body { width: 1080px; height: 1920px; position: relative; color: #F2F2F5;
+         font-family: "Noto Sans SC", sans-serif; -webkit-font-smoothing: antialiased; }
+  #glow { position: absolute; inset: 0;
+          background: radial-gradient(86% 36% at 50% 4%, rgba(124,212,255,.18), transparent 66%); }
+
+  .kicker { position: absolute; top: 150px; width: 100%; text-align: center;
+            font-size: 26px; letter-spacing: 8px; color: #7C8AA5; }
+  .title { position: absolute; top: 196px; width: 100%; text-align: center;
+           font-size: 96px; font-weight: 900; letter-spacing: -2px; }
+
+  #source { position: absolute; left: 90px; top: 340px; width: 900px;
+            border-radius: 22px; background: #0E1016; overflow: hidden;
+            border: 1px solid rgba(255,255,255,.12); }
+  #source .bar { display: flex; align-items: center; gap: 11px; padding: 15px 24px;
+                 background: rgba(255,255,255,.04);
+                 border-bottom: 1px solid rgba(255,255,255,.08); }
+  #source .bar i { width: 12px; height: 12px; border-radius: 999px; display: block; }
+  #source .bar span { margin-left: 12px; font-size: 21px; color: #6E7488;
+                      font-family: "Cascadia Mono", Consolas, monospace; }
+  #source pre { margin: 0; padding: 18px 24px 20px; font-size: 22px; line-height: 1.55;
+                font-family: "Cascadia Mono", Consolas, monospace; color: #8A94AA;
+                white-space: pre; min-height: 232px; }
+  #source b { color: #7CD4FF; font-weight: 400; }
+  #caret { color: #FFC857; }
+
+  #chart { position: absolute; left: 40px; top: 700px; width: 1000px; height: 940px;
+           display: flex; align-items: center; justify-content: center; }
+  #chart svg { max-width: 1000px; max-height: 940px; }
+
+  #foot { position: absolute; left: 0; bottom: 170px; width: 100%; text-align: center;
+          font-size: 25px; color: #5F6577;
+          font-family: "Cascadia Mono", Consolas, monospace; }
+</style>
+
+<div id="glow"></div>
+<div class="kicker" id="kicker">MERMAID &nbsp;·&nbsp; DIAGRAM AS CODE</div>
+<div class="title" id="title">Diagrams as Code</div>
+
+<div id="source">
+  <div class="bar">
+    <i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i>
+    <span>pipeline.mmd</span>
+  </div>
+  <pre id="src-text"></pre>
+</div>
+
+<div id="chart"></div>
+<div id="foot" style="opacity:0">edit one line → the layout reflows</div>
+
+<script src="../_shared/anim.js"></script>
+<script type="module" src="./scene.js"></script>

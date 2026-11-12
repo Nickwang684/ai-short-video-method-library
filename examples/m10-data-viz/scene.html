@@ -1,0 +1,69 @@
+<meta charset="utf-8" />
+<title>Data-driven scene</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #08080C; overflow: hidden; }
+  body { width: 1080px; height: 1920px; position: relative; color: #F2F2F5;
+         font-family: "Noto Sans SC", sans-serif; -webkit-font-smoothing: antialiased; }
+  .mono { font-family: "Cascadia Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+
+  #glow { position: absolute; inset: 0;
+          background: radial-gradient(84% 38% at 50% 4%, rgba(74,158,255,.18), transparent 66%); }
+
+  .kicker { position: absolute; top: 148px; width: 100%; text-align: center;
+            font-size: 26px; letter-spacing: 8px; color: #7C8AA5; }
+  .title { position: absolute; top: 192px; width: 100%; text-align: center;
+           font-size: 96px; font-weight: 900; letter-spacing: -2px; }
+  .note { position: absolute; top: 318px; width: 100%; text-align: center;
+          font-size: 29px; color: #6E7488; }
+
+  .card { position: absolute; left: 90px; width: 900px; border-radius: 24px;
+          background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.11);
+          padding: 26px 30px 22px; }
+  .card h3 { font-size: 32px; font-weight: 700; display: flex; align-items: center; gap: 14px; }
+  .card h3 em { font-style: normal; font-size: 21px; letter-spacing: 3px; padding: 5px 12px;
+                border-radius: 999px; font-family: "Cascadia Mono", Consolas, monospace; }
+  .card p { margin-top: 5px; font-size: 23px; color: #7A8092; }
+
+  #cardA { top: 400px; height: 556px; }
+  #cardA h3 em { color: #7CD4FF; border: 1px solid rgba(124,212,255,.4); }
+  #chartA { margin-top: 14px; height: 424px; }
+
+  #cardB { top: 986px; height: 620px; }
+  #cardB h3 em { color: #FFB84D; border: 1px solid rgba(255,184,77,.4); }
+  #chartB { margin-top: 12px; }
+
+  #foot { position: absolute; left: 90px; top: 1650px; width: 900px;
+          display: flex; align-items: center; justify-content: space-between;
+          font-size: 24px; color: #5F6577;
+          font-family: "Cascadia Mono", Consolas, monospace; }
+  #foot b { color: #4ADE80; font-weight: 400; }
+</style>
+
+<div id="glow"></div>
+<div class="kicker" id="kicker">DATA-DRIVEN &nbsp;·&nbsp; VEGA-LITE + D3</div>
+<div class="title" id="title">Data-Driven</div>
+<div class="note" id="note">same data, two tools, each doing what it does best</div>
+
+<div class="card" id="cardA">
+  <h3>Vega-Lite <em>declarative</em></h3>
+  <p>one spec buys a correct chart — axes, ticks and legend for free</p>
+  <div id="chartA"></div>
+</div>
+
+<div class="card" id="cardB">
+  <h3>D3 <em>frame by frame</em></h3>
+  <p>rank, width and numbers all interpolate from frame — no .transition()</p>
+  <svg id="chartB" width="840" height="470"></svg>
+</div>
+
+<div id="foot">
+  <span>sample data · 12 weeks × 6 content formats</span>
+  <span>period <b id="f-period">01</b> / 12</span>
+</div>
+
+<script src="./node_modules/d3/dist/d3.min.js"></script>
+<script src="./node_modules/vega/build/vega.min.js"></script>
+<script src="./node_modules/vega-lite/build/vega-lite.min.js"></script>
+<script src="../_shared/anim.js"></script>
+<script src="./scene.js"></script>

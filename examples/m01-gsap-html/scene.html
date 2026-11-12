@@ -1,0 +1,80 @@
+<meta charset="utf-8" />
+<title>GSAP timeline scene</title>
+<style>
+  html, body { margin: 0; background: #08080C; overflow: hidden; }
+  body {
+    width: 1080px; height: 1920px; position: relative;
+    font-family: "Noto Sans SC", sans-serif; color: #F2F2F5;
+    -webkit-font-smoothing: antialiased;
+  }
+  #glow {
+    position: absolute; inset: 0;
+    background: radial-gradient(110% 50% at 50% 0%, rgba(74,158,255,.22), transparent 68%);
+  }
+  #grid {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 72px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 72px);
+    -webkit-mask-image: radial-gradient(80% 60% at 50% 40%, black, transparent 100%);
+  }
+
+  .kicker { position: absolute; top: 210px; width: 100%; text-align: center;
+            font-size: 28px; font-weight: 500; letter-spacing: 9px; color: #7C8AA5; }
+  .title  { position: absolute; top: 262px; width: 100%; text-align: center;
+            font-size: 104px; font-weight: 900; letter-spacing: -2px; }
+  .sub    { position: absolute; top: 400px; width: 100%; text-align: center;
+            font-size: 34px; color: #8A8FA3; font-family: "Cascadia Mono", Consolas, monospace; }
+
+  #tiles { position: absolute; left: 142px; top: 560px; width: 796px; height: 632px; }
+  .tile  { position: absolute; width: 140px; height: 140px; border-radius: 26px;
+           background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.10); }
+
+  #arcwrap { position: absolute; left: 0; top: 1250px; width: 100%; text-align: center; }
+  .caption { position: absolute; top: 1490px; width: 100%; text-align: center;
+             font-size: 44px; font-weight: 700; }
+  .caption span { display: inline-block; }
+
+  #tlpanel { position: absolute; left: 90px; top: 1600px; width: 900px; height: 210px;
+             border-radius: 22px; background: rgba(255,255,255,.04);
+             border: 1px solid rgba(255,255,255,.10); overflow: hidden; }
+  .trackrow { position: absolute; left: 30px; width: 840px; height: 26px; }
+  .tracklabel { position: absolute; top: 3px; font-size: 19px; letter-spacing: 2px;
+                font-family: "Cascadia Mono", Consolas, monospace; opacity: .7; }
+  .block { position: absolute; height: 26px; border-radius: 8px; opacity: .85; }
+  #playhead { position: absolute; top: 0; width: 3px; height: 100%; background: #FFD866;
+              box-shadow: 0 0 16px rgba(255,216,102,.9); }
+  #tlclock { position: absolute; right: 24px; top: 14px; font-size: 24px;
+             font-family: "Cascadia Mono", Consolas, monospace; color: #FFD866; }
+  .tlname { position: absolute; left: 24px; top: 14px; font-size: 22px; letter-spacing: 4px;
+            color: #6E7488; font-family: "Cascadia Mono", Consolas, monospace; }
+</style>
+
+<div id="glow"></div>
+<div id="grid"></div>
+
+<div class="kicker" id="kicker">GSAP &nbsp;·&nbsp; TIMELINE</div>
+<div class="title" id="title">Timelines</div>
+<div class="sub" id="sub">tl.to(...).to(...) &nbsp;·&nbsp; stagger &nbsp;·&nbsp; ease</div>
+
+<div id="tiles"></div>
+
+<div id="arcwrap">
+  <svg id="arc" width="200" height="200" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="82" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="10" />
+    <circle id="arcpath" cx="100" cy="100" r="82" fill="none" stroke="#4ADE80" stroke-width="10"
+            stroke-linecap="round" transform="rotate(-90 100 100)" />
+  </svg>
+</div>
+
+<div class="caption" id="caption"></div>
+
+<div id="tlpanel">
+  <div class="tlname">TIMELINE</div>
+  <div id="tlclock">0.00s</div>
+  <div id="tracks"></div>
+  <div id="playhead" style="left:30px"></div>
+</div>
+
+<script src="./node_modules/gsap/dist/gsap.min.js"></script>
+<script src="./scene.js"></script>
