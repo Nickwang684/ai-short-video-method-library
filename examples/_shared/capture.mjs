@@ -2,10 +2,11 @@
 /**
  * Frame-locked browser capture.
  *
- * Renders a deterministic HTML scene to an MP4 by seeking one frame at a time
- * and piping each screenshot straight into FFmpeg. Nothing depends on wall
- * clock, so the output is identical on every run — the same guarantee Remotion
- * gives, but for any web technology (GSAP, Canvas, WebGL, D3, Lottie …).
+ * Renders an HTML scene to an MP4 by seeking one frame at a time and piping
+ * each screenshot into FFmpeg. The capture loop controls scene time instead
+ * of recording wall-clock playback. Repeatability also depends on the scene,
+ * assets, random state, fonts, browser and dependencies; pixel-identical output
+ * across runs or machines requires separate verification.
  *
  * A scene must expose on `window`:
  *   SCENE_META = { width, height, fps, durationInFrames }
